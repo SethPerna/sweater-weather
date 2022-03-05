@@ -13,6 +13,8 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'simplecov'
+require 'webmock/rspec'
 SimpleCov.start 'rails'
 SimpleCov.add_filter ['channels', 'jobs', 'mailers', 'models/application_record.rb']
 RSpec.configure do |config|
