@@ -6,10 +6,12 @@ class ForecastService
     end
   end
 
-  def self.get_forecast(latitude, longitude)
+  def self.get_forecast(lat, lon)
     response = connection.get do |faraday|
-      faraday.params['lat'] = latitude
-      faraday.params['lon'] = longitude
+      faraday.params['lat'] = lat
+      faraday.params['lon'] = lon
+      faraday.params['units'] = "imperial"
+      faraday.params['exclude'] = 'minutely'
     end
     JSON.parse(response.body, symbolize_names: true)
   end
