@@ -1,8 +1,7 @@
 class ForecastSerializer
-  #include JSONAPI::Serializer
 
   def self.weather(forecast)
-    hash = { "data":
+    { "data":
       {
         "id": nil,
         "type": 'forecast',
@@ -23,7 +22,7 @@ class ForecastSerializer
             },
             "daily_weather": forecast[:daily].shift(5).map do |day|
                 {
-                  "datetime": Time.at(day[:dt]),
+                  "datetime": Date.jd(day[:dt]),
                   "sunrise": Time.at(day[:sunrise]),
                   "sunset": Time.at(day[:sunset]),
                   "max_temp": day[:temp][:max],

@@ -31,13 +31,15 @@ RSpec.describe 'forecast request' do
     expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:conditions)
     expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:icon)
     expect(forecast[:data][:attributes]).to have_key(:hourly_weather)
+
     expect(forecast[:data][:attributes]).to_not have_key(:minutely)
+    
     expect(forecast[:data][:attributes][:hourly_weather].count).to eq(8)
     expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:time)
     expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:temp)
     expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:conditions)
     expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:icon)
-    
+
     expect(forecast[:data][:attributes][:current_weather]).to_not have_key(:wind_speed)
     expect(forecast[:data][:attributes][:current_weather]).to_not have_key(:wind_deg)
     expect(forecast[:data][:attributes][:current_weather]).to_not have_key(:wind_gust)
