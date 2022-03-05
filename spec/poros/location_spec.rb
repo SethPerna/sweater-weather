@@ -6,7 +6,7 @@ RSpec.describe Location do
 
     coords = Location.new(location)
     expect(coords).to be_a Location
-    expect(coords.lattitude).to eq(location[:lat])
+    expect(coords.latitude).to eq(location[:lat])
     expect(coords.longitude).to eq(location[:lng])
   end
 end
