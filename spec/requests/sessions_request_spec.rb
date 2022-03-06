@@ -71,4 +71,26 @@ RSpec.describe 'session request' do
     expect(user[:data]).to have_key(:message)
     expect(user[:data][:message]).to eq("Incorrect Email/Password")
   end
+
+  it 'returns invalid credentials when email and password do not match' do
+    data = {
+      "email": "gseth26@gmail.com",
+      "password": "password",
+      "password_confirmation": "password"
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    post '/api/v1/users', headers: headers, params: JSON.generate(data)
+
+    data_login = {
+      "email": "gth26gmail.com",
+      "password": "passwrd",
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    post '/api/v1/sessions', headers: headers, params: JSON.generate(data_login)
+    user = JSON.parse(response.body, symbolize_names: true)
+    expect(response.status).to eq(200)
+    expect(user).to have_key(:data)
+    expect(user[:data]).to have_key(:message)
+    expect(user[:data][:message]).to eq("Incorrect Email/Password")
+  end
 end
