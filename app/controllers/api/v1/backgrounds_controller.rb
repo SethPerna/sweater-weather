@@ -2,7 +2,7 @@ class Api::V1::BackgroundsController < ApplicationController
   before_action :check_location
 
   def index
-    background = BackgroundFacade.find_forecast(@location)
+    background = BackgroundFacade.find_image(@location)
     render json: BackgroundSerializer.image(background, @location)
   end
 
