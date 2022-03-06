@@ -23,4 +23,12 @@ RSpec.describe 'forecast request' do
     expect(background[:data][:attributes]).to_not have_key(:height)
 
   end
+
+  it 'returns 404 when invalid params are given', :vcr do
+
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    get '/api/v1/backgrounds', headers: headers, params: { photo: "ksdkjas" }
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+  end
 end

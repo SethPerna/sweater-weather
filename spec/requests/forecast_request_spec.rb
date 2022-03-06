@@ -33,7 +33,7 @@ RSpec.describe 'forecast request' do
     expect(forecast[:data][:attributes]).to have_key(:hourly_weather)
 
     expect(forecast[:data][:attributes]).to_not have_key(:minutely)
-    
+
     expect(forecast[:data][:attributes][:hourly_weather].count).to eq(8)
     expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:time)
     expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:temp)
@@ -62,5 +62,13 @@ RSpec.describe 'forecast request' do
     expect(forecast[:data][:attributes][:hourly_weather][0]).to_not have_key(:dew_point)
     expect(forecast[:data][:attributes][:hourly_weather][0]).to_not have_key(:wind_deg)
     expect(forecast[:data][:attributes][:hourly_weather][0]).to_not have_key(:wind_speed)
-    expect(forecast[:data][:attributes][:hourly_weather][0]).to_not have_key(:wind_gust)  end
+    expect(forecast[:data][:attributes][:hourly_weather][0]).to_not have_key(:wind_gust)
+  end
+
+  it 'returns 404 when invalid params are sent', :vcr do
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    get '/api/v1/forecast', headers: headers, params: { weather: "denver,co" }
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+  end
 end
