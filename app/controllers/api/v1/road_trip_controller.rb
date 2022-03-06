@@ -4,9 +4,14 @@ class Api::V1::RoadTripController < ApplicationController
     to = params[:origin]
     from = params[:destination]
     road_trip = RoadTripFacade.get_road_trip(to, from)
-    lat_lng = road_trip[:route][:locations][1][:latLng]
-    forecast = ForecastFacade.find_forecast(lat_lng[:lat], lat_lng[:lng])
-    render json: RoadTripSerializer.road_trip(road_trip, forecast)
+    if road_trip[:info][:statuscode] == 402
+      return invalid_location(road_trip)
+    elsif
+      lat_lng = road_trip[:route][:locations][1][:latLng]
+      forecast = ForecastFacade.find_forecast(lat_lng[:lat], lat_lng[:lng])
+      render json: RoadTripSerializer.road_trip(road_trip, forecast)
+    end
+
   end
 
   private
@@ -20,4 +25,7 @@ class Api::V1::RoadTripController < ApplicationController
     render json: { data: { message: 'Invalid API Key' } }
   end
 
+  def invalid_location(road_trip)
+    render json: InvalidSerializer.road_trip(road_trip)
+  end
 end
