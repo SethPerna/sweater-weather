@@ -4,7 +4,7 @@ RSpec.describe 'forecast request' do
     params = { location: "denver,co", quantity: 5 }
 
     headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
-    get '/api/v1/book_search', headers: headers, params: params
+    get '/api/v1/book-search', headers: headers, params: params
     book_response = JSON.parse(response.body, symbolize_names: true)
     expect(response).to be_successful
     expect(response.status).to eq(200)
