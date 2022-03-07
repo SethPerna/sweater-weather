@@ -27,6 +27,12 @@ RSpec.describe 'forecast request' do
       expect(book).to have_key(:title)
       expect(book).to have_key(:publisher)
     end
+    #tests to ensure all un-needed data has been filtered out
+    expect(book_response[:data][:attributes]).to_not have_key(:key)
+    expect(book_response[:data][:attributes]).to_not have_key(:type)
+    expect(book_response[:data][:attributes]).to_not have_key(:seed)
+    expect(book_response[:data][:attributes]).to_not have_key(:title_suggest)
+    expect(book_response[:data][:attributes]).to_not have_key(:last_modified)
   end
 
   it 'returns 404 if params arew invalid', :vcr do
