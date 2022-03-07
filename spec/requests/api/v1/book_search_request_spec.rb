@@ -28,4 +28,13 @@ RSpec.describe 'forecast request' do
       expect(book).to have_key(:publisher)
     end
   end
+
+  it 'returns 404 if params arew invalid', :vcr do
+    params = { quantity: 5 }
+
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    get '/api/v1/book-search', headers: headers, params: params
+
+    expect(response.status).to eq(404)
+  end
 end
