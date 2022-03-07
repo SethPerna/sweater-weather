@@ -43,4 +43,17 @@ RSpec.describe 'forecast request' do
 
     expect(response.status).to eq(404)
   end
+
+  it "returns error message if quantity is not valid" do
+    params = { location: "denver,co", quantity: 50000000 }
+
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    get '/api/v1/book-search', headers: headers, params: params
+    book_response = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(200)
+    expect(book_response).to have_key(:data)
+    expect(book_response[:data]).to have_key(:message)
+    expect(book_response[:data][:message]).to eq("Invalid Quantity")
+  end
 end
