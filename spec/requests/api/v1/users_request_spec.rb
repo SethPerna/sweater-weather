@@ -42,9 +42,21 @@ RSpec.describe 'users request' do
 
     expect(response.status).to eq(404)
   end
+
   it 'returns 404 when ivalid attributes' do
     data = {
       "email": "gseth26@gmail.com",
+      "password_confirmation": "password"
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    post '/api/v1/users', headers: headers, params: JSON.generate(data)
+
+    expect(response.status).to eq(404)
+  end
+
+  it 'returns 404 when ivalid attributes' do
+    data = {
+      "email": "gseth26gmail.com",
       "password_confirmation": "password"
     }
     headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
