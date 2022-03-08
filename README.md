@@ -208,7 +208,7 @@ At this point you should be taken to a page with an example JSON response for a 
     
   <tr>
       
-    <td align="center"><a href="https://github.com/sethperna"><img src="https://avatars.githubusercontent.com/u/90224504?v=4" width="100px;" alt=""/><br /><sub><b>Seth (he/him)</b></sub></a><br /><a href="https://github.com/sethperna/sweater-weather/commits?author=sethperna" title="Code">💻</a> <a href="https://github.com/sethperna/sweater-weather/pulls?q=is%3Apr+author%3ASethPerna" title="Reviewed Pull Requests">👀</a>
+    <td align="center"><a href="https://github.com/sethperna"><img src="https://avatars.githubusercontent.com/u/90224504?v=4" width="100px;" alt=""/><br /><sub><b>Seth (he/him)</b></sub></a><br /><a href="https://github.com/sethperna/sweater-weather/commits?author=sethperna" title="Code">💻</a> 
      </td>
       
       
