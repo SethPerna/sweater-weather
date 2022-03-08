@@ -185,6 +185,7 @@ At this point you should be taken to a page with an example JSON response for a 
 - get '/backgrounds', to: 'backgrounds#index'
 
 - post '/users', to: 'users#create'
+
 ![Screen Shot 2022-03-07 at 5 14 21 PM](https://user-images.githubusercontent.com/90224504/157126823-4126fa96-5675-4500-b87f-0d9a0a57d3be.png)
 
 - post '/sessions', to: 'sessions#create'
