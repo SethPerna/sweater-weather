@@ -178,7 +178,7 @@ $ rails s
 At this point you should be taken to a page with an example JSON response for a user
 
 ## Endpoints provided 
-```
+
 
 - get '/forecast', to: 'forecast#index'
       
