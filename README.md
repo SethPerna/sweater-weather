@@ -162,13 +162,14 @@ If there are any errors, verify that bundler, Rails, and your ruby environment a
 Before using the web application you will need to setup your databases locally by running the following command
 
 ```shell
-$ rails db: {:drop, :create, :migrate, :seed}
+$ rails db:{:drop,:create,:migrate,:seed}
 ```
 
 
 5. Startup and Access<br>
 Finally, in order to use the web app you will have to start the server locally and access the app through a web browser. 
 - Start server
+
 ```shell
 $ rails s
 ```
@@ -207,7 +208,7 @@ At this point you should be taken to a page with an example JSON response for a 
     
   <tr>
       
-    <td align="center"><a href="https://github.com/sethperna"><img src="https://avatars.githubusercontent.com/u/90224504?v=4" width="100px;" alt=""/><br /><sub><b>Seth (he/him)</b></sub></a><br /><a href="https://github.com/cuisine-odyssey/backend_application/commits?author=sethperna" title="Code">💻</a> <a href="https://github.com/Cuisine-Odyssey/backend_application/pulls?q=is%3Apr+author%3ASethPerna" title="Reviewed Pull Requests">👀</a>
+    <td align="center"><a href="https://github.com/sethperna"><img src="https://avatars.githubusercontent.com/u/90224504?v=4" width="100px;" alt=""/><br /><sub><b>Seth (he/him)</b></sub></a><br /><a href="https://github.com/sethperna/sweater-weather/commits?author=sethperna" title="Code">💻</a> <a href="https://github.com/sethperna/sweater-weather/pulls?q=is%3Apr+author%3ASethPerna" title="Reviewed Pull Requests">👀</a>
      </td>
       
       
