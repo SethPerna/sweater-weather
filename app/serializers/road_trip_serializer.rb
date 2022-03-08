@@ -50,10 +50,10 @@ class RoadTripSerializer
   def self.get_forecast_conditions(road_trip, forecast)
     conditions = nil
     time_calc = self.arrival_time(road_trip)
-    if time_calc < 24
+    if time_calc < 48
       conditions = forecast[:hourly][time_calc][:weather][0][:description]
-    elsif time_calc >= 24
-      conditions = forecast[:daily][1][:weather][0][:description]
+    elsif time_calc >= 48
+      conditions = forecast[:daily][2][:weather][0][:description]
     end
     conditions
   end
@@ -61,10 +61,10 @@ class RoadTripSerializer
   def self.get_forecast_temp(road_trip, forecast)
     temp = nil
     time_calc = self.arrival_time(road_trip)
-    if time_calc < 24
+    if time_calc < 48
       temp = forecast[:hourly][time_calc][:temp]
-    elsif time_calc >= 24
-      temp = forecast[:daily][1][:temp][:day]
+    elsif time_calc >= 48
+      temp = forecast[:daily][2][:temp][:day]
     end
     temp
   end
