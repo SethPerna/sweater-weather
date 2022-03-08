@@ -154,6 +154,7 @@ Using simplecov_json_formatter 0.1.3
 Using simplecov 0.21.2
 Using spring 2.1.1
 Using spring-watcher-listen 2.0.1
+```
 
 If there are any errors, verify that bundler, Rails, and your ruby environment are correctly setup.
 
