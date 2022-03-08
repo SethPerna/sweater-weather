@@ -28,7 +28,7 @@ RSpec.describe 'session request' do
   it 'returns json response for incorrect API key', :vcr do
     body = {
         "origin": "Denver,CO",
-        "destination": "Puebloe,CO",
+        "destination": "Pueblo,CO",
         "api_key": "1234"
     }
     headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
