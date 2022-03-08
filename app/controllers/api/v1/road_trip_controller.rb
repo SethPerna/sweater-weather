@@ -9,7 +9,8 @@ class Api::V1::RoadTripController < ApplicationController
     elsif
       lat_lng = road_trip[:route][:locations][1][:latLng]
       forecast = ForecastFacade.find_forecast(lat_lng[:lat], lat_lng[:lng])
-      render json: RoadTripSerializer.road_trip(road_trip, forecast)
+      trip = RoadTrip.new(road_trip, forecast)
+      render json: RoadTripSerializer.road_trip(trip)
     end
 
   end
