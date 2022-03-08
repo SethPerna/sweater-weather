@@ -183,8 +183,12 @@ At this point you should be taken to a page with an example JSON response for a 
 
 
 - get '/forecast', to: 'forecast#index'
+
+![Screen Shot 2022-03-08 at 11 36 33 AM](https://user-images.githubusercontent.com/90224504/157283024-4c11adcc-e758-45e5-a58e-3f9b1ce09adc.png)
       
 - get '/backgrounds', to: 'backgrounds#index'
+
+![Screen Shot 2022-03-08 at 11 38 26 AM](https://user-images.githubusercontent.com/90224504/157283428-a14d3f12-df6b-4d0a-b2d0-2784f429744c.png)
 
 - post '/users', to: 'users#create'
 
@@ -196,7 +200,15 @@ At this point you should be taken to a page with an example JSON response for a 
 
 - post '/road_trip', to: 'road_trip#create'
 
+![Screen Shot 2022-03-08 at 11 41 07 AM](https://user-images.githubusercontent.com/90224504/157283914-42baba23-d7a4-4d67-be3c-cf6f2605832a.png)
 
+- Response for invalid origin/destination i.e. Ocean or invalid location
+
+![Screen Shot 2022-03-08 at 11 42 23 AM](https://user-images.githubusercontent.com/90224504/157284139-9d97f284-1237-4565-8b44-2e7b6db17865.png)
+
+- Response for invalid API KEY 
+
+![Screen Shot 2022-03-08 at 11 43 06 AM](https://user-images.githubusercontent.com/90224504/157284277-d08d2a78-c09e-4da7-a752-fbaf89ba9cc7.png)
 
 
 ## **Contributors** ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
