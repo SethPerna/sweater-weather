@@ -1,25 +1,13 @@
 require 'rails_helper'
 RSpec.describe 'session request' do
+  before (:each) do
+    @user = User.create(email: "gseth26@gmail.com", password: "password", password_confirmation: "password" )
+  end
   it 'returns json response for a road trip when a valid API key is given', :vcr do
-    data = {
-      "email": "gseth26@gmail.com",
-      "password": "password",
-      "password_confirmation": "password"
-    }
-    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
-    post '/api/v1/users', headers: headers, params: JSON.generate(data)
-    user_register = JSON.parse(response.body, symbolize_names: true)
-    data_login = {
-      "email": "gseth26@gmail.com",
-      "password": "password",
-    }
-    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
-    post '/api/v1/sessions', headers: headers, params: JSON.generate(data_login)
-    user = JSON.parse(response.body, symbolize_names: true)
     body = {
         "origin": "Denver,CO",
         "destination": "Pueblo,CO",
-        "api_key": user[:data][:attributes][:api_key]
+        "api_key": "#{@user.auth_token}"
     }
     headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
     post '/api/v1/road_trip', headers: headers, params: JSON.generate(body)
@@ -38,21 +26,6 @@ RSpec.describe 'session request' do
   end
 
   it 'returns json response for incorrect API key', :vcr do
-    data = {
-      "email": "gseth26@gmail.com",
-      "password": "password",
-      "password_confirmation": "password"
-    }
-    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
-    post '/api/v1/users', headers: headers, params: JSON.generate(data)
-    user_register = JSON.parse(response.body, symbolize_names: true)
-    data_login = {
-      "email": "gseth26@gmail.com",
-      "password": "password",
-    }
-    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
-    post '/api/v1/sessions', headers: headers, params: JSON.generate(data_login)
-    user = JSON.parse(response.body, symbolize_names: true)
     body = {
         "origin": "Denver,CO",
         "destination": "Puebloe,CO",
@@ -68,25 +41,10 @@ RSpec.describe 'session request' do
   end
 
   it 'returns travel time impossible when route cannot be mapped', :vcr do
-    data = {
-      "email": "gseth26@gmail.com",
-      "password": "password",
-      "password_confirmation": "password"
-    }
-    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
-    post '/api/v1/users', headers: headers, params: JSON.generate(data)
-    user_register = JSON.parse(response.body, symbolize_names: true)
-    data_login = {
-      "email": "gseth26@gmail.com",
-      "password": "password",
-    }
-    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
-    post '/api/v1/sessions', headers: headers, params: JSON.generate(data_login)
-    user = JSON.parse(response.body, symbolize_names: true)
     body = {
         "origin": "Denver,CO",
         "destination": "Tokyo",
-        "api_key": user[:data][:attributes][:api_key]
+        "api_key": "#{@user.auth_token}"
     }
     headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
     post '/api/v1/road_trip', headers: headers, params: JSON.generate(body)
